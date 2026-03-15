@@ -1,5 +1,7 @@
 from constants import RESUMES_FILES
 from langextract_helper import extract_data
+from ollama_models import get_info
+from pdf_to_img import pdf_to_base64_img
 from pymupdf_helper import extract_text
 from unstructured_helper import pdf_file, unstructured_element_to_text
 
@@ -18,7 +20,9 @@ def using_pymypdf():
 
 
 def main():
-    using_pymypdf()
+    res = pdf_to_base64_img(RESUMES_FILES[0])
+    # print(res)
+    get_info(res)
 
 
 if __name__ == "__main__":

@@ -1,9 +1,8 @@
 import os
 import textwrap
 
-import langextract as lx
 from dotenv import load_dotenv
-from langextract.data import AnnotatedDocument, ExampleData
+from langextract.data import AnnotatedDocument, ExampleData, Extraction
 from langextract.extraction import extract
 from langextract.providers.gemini import GeminiLanguageModel
 from langextract.providers.ollama import OllamaLanguageModel
@@ -20,22 +19,22 @@ examples = [
     ExampleData(
         text="Jane Smith Skills: Python GitHub: https://github.com/jane Project: ML chatbot",
         extractions=[
-            lx.data.Extraction(
+            Extraction(
                 extraction_class="name",
                 extraction_text="Jane Smith",
                 attributes={},
             ),
-            lx.data.Extraction(
+            Extraction(
                 extraction_class="skill",
                 extraction_text="Python",
                 attributes={},
             ),
-            lx.data.Extraction(
+            Extraction(
                 extraction_class="link",
                 extraction_text="https://github.com/jane",
                 attributes={"type": "github"},
             ),
-            lx.data.Extraction(
+            Extraction(
                 extraction_class="project",
                 extraction_text="ML chatbot",
                 attributes={},
